@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*有ABC三个请求 ， AB请求同时发起 ， 但不一定同时结束 ， 要求在AB请求结束之后执行C请求*/
+    //解决 Promise.all([promise对象1，promise对象2])方法
+    //Promise.all()传入一个数组，数组里面存放的是promsie实例对象 ， 
+    //当传入的数组里面的promise对象的状态全部变为resolve状态时 ， Promise.all状态也会变为resolve 
+    //传入的数组里面的promise对象的状态有一个变为rejected状态 ， Promise.all状态也会变为rejected
+    const A = new Promise((re,rj)=>{
+        setTimeout(()=>{
+            re('我是A请求')
+        },2000)
+    })
+    const B = new Promise((re,rj)=>{
+        setTimeout(()=>{
+            re('我是B请求')
+        },4000)
+    })
+    Promise.all([A,B]).then(data=>{
+        console.log(data);//为数组 ， 存放A,Bpromise对象resolve的数据
+        return new Promise((re,rj)=>{
+            setTimeout(()=>{
+                re('我是C请求')
+            },2000)
+        })
+    }).then(data=>{
+        console.log(data);
+    })
+</script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+//Promise.race([promise对象1，promise对象2])方法
+//Promise.race()传入一个数组，数组里面存放的是promsie实例对象 ， 
+//找到传入的数组里面的所有promise对象 ， 哪一个promise的状态最先变为resolve
+//然后Promise.race的状态也变为resolve
+const A = new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+        reject('我是A')
+    },5000)
+})
+const B = new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+        resolve('我是B')
+    },4000)
+})
+Promise.race([A,B]).then(data=>{
+    console.log(data);// 存放状态最先变为resolved的哪个promise对象的resolve
+    
+})
+</script>
+</html>
