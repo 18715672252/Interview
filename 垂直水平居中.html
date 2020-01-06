@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>垂直水平居中</title>
+    <style>
+        .box {
+            width: 800px;
+            height: 400px;
+            border: 1px solid red;
+        }
+        .div {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        /* 方法一 */
+        .wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* 方法2 */
+        .wrap1 {
+            position: relative;
+        }
+        .div1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        /* 方法3 */
+        .wrap2 {
+            position: relative;
+        }
+        .div2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+        }
+        /* 方法4 */
+        .wrap3 {
+           display: table-cell;
+           text-align: center;
+           vertical-align: middle;
+        }
+        .div3 {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap box">
+        <div class="div div"></div>
+    </div>
+    <div class="wrap1 box">
+        <div class="div div1"></div>
+    </div>
+    <div class="wrap2 box">
+        <div class="div div2"></div>
+    </div>
+    <div class="wrap3 box">
+        <div class="div div3"></div>
+    </div>
+</body>
+</html>

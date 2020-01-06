@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+function Fn(){
+
+}
+let obj = new Fn();
+//1.创建一个空对象 var obj = {};
+//2.将构造函数的作用域赋值给这个对象 obj.__proto__=foo.prototype;
+//3.执行构造函数当中的代码 , 为对象添加属性 foo.call(obj);
+//4.返回一个新对象
+//in和hasOwnProperty
+let obj1 = {a:1}
+//in方法判断该属性是否属于该对象 , 包括原型链上的属性
+console.log('a' in obj1);//true
+console.log('toString' in obj1);//true
+//hasOwnProperty方法判断该属性是否属于该对象 , 不包括原型链上的属性
+console.log(obj1.hasOwnProperty('a'));//true
+console.log(obj1.hasOwnProperty('toString'));//false
+//Object.getPrototypeOf(obj) 返回obj的__proto__
+
+
+</script>
+</html>

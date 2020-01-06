@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>async的用法</title>
+</head>
+<body>
+    
+</body>
+<script>
+//基础用法
+async function an1(){//只有当promise对象的状态变为resolved后才会执行下面的代码,假如有一个promise的没有变为resolved的话 , 那么这个promise对象后面的代码就不会执行 ,并把resolve的值赋给前面的变量
+    let a = await new Promise((re,rj)=>{
+        setTimeout(()=>{
+            re(1)
+        },2000)
+    })
+    console.log('2s之后打印'+a);
+    let b = await new Promise((re,rj)=>{
+        setTimeout(()=>{
+            re(2)
+        },2000)
+    })
+    console.log('4s之后打印'+b);
+}
+an1()
+
+//async函数的返回值
+async function fn1(){//有返回值的话 , async会默认返回一个promise.resolve(return的值)的实例对象
+    let a = await new Promise((re,rj)=>{
+        setTimeout(()=>{
+            re('我是返回值')
+        },5000)
+    }) 
+    return a;
+}
+fn1().then(data=>{
+    console.log(data);
+})
+//async函数铺货rejected状态
+async function fn2(){
+    try {
+        let a = await new Promise((re,rj)=>{
+            setTimeout(()=>{
+                rj('async铺货rejecte状态')
+            },10000)
+        }) 
+    } catch (error) {
+        console.log(error);
+    }
+}
+fn2()
+</script>
+</html>

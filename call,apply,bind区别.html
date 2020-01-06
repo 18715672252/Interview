@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //call,apply与bind的区别
+    //1.call和apply都是对函数的直接调用，而bind方法返回的仍然是一个函数，因此后面还需要()来进行调用才可以
+    var a = 'sun'
+    let obj = {
+        a:'di',
+        sey(a1,a2){
+            console.log(this.a+a1+a2);
+        }
+    }
+    obj.sey.call(window,'call','传参');
+    obj.sey.apply(window,['apply','传参']);
+    obj.sey.bind(window)('bind','传参');
+    //1.call和apply调用函数的区别在于向函数传参的方式
+    //2.bind与call,apply的区别在call,apply直接调用函数 , 并把函数的this指向该方法的一个参数 ,而bind是返回一个指向该对象的函数 , 调用并传参的话需在后面加(c1,c2);
+        
+</script>
+</html>
