@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+//设置AJAX的全局默认选项
+$.ajaxSetup( {
+	url: "/index.html" , // 默认URL
+	aysnc: false , // 默认同步加载
+	type: "POST" , // 默认使用POST方式
+	headers: { // 默认添加请求头
+		"Author": "CodePlayer" ,
+		"Powered-By": "CodePlayer"
+	} ,
+	error: function(jqXHR, textStatus, errorMsg){ // 出错时默认的处理函数
+        // 提示形如：发送AJAX请求到"/index.html"时出错[404]：Not Found
+        alert( '发送AJAX请求到"' + this.url + '"时出错[' + jqXHR.status + ']：' + errorMsg );		
+	}
+} );
+
+
+// 指定预处理参数选项的函数，只预处理dataType为json或html类型的AJAX请求,预处理ajax请求和axios的interceptors.request.use(congfig=>{}),
+$.ajaxPrefilter( "json html", function(options, originalOptions, jqXHR){ //普瑞费哦特
+	// options对象 包括accepts、crossDomain、contentType、url、async、type、headers、error、dataType等许多参数选项 即:ajax的配置对象
+	// originalOptions对象 就是你为$.ajax()方法传递的参数对象，也就是 { url: "/index.php" } 即:ajax的参数对象data
+	// jqXHR对象 就是经过jQuery封装的XMLHttpRequest对象(保留了其本身的属性和方法)
+
+	if( options.data == null && options.type == "POST"){
+		options.type = "GET"; // 将请求方式改为GET
+		options.headers = { }; // 清空自定义的请求头				
+	}
+	
+});
+
+
+
+</script>
+</html>
