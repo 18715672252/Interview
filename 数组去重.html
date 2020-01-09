@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+//方法一
+    var arr = [1,2,3,1,2,3];
+    let arr1 = [];
+    let i = 0;
+    while(arr[i]) {
+        if(arr1.indexOf(arr[i]) == -1) {
+            arr1.push(arr[i])
+        }
+        i++
+    }
+    console.log(arr1);
+    console.log(arr1.includes(1));
+    
+    
+//方法二Array.reduce和includes(判断某个元素是否存在于数组中)
+    var arr2 = [123,123,123,4,4];
+    let arr3 = arr2.reduce((pre,curr)=>{
+        if(pre.includes(curr)) {
+            return pre;
+        }else {
+            pre.push(curr)
+            return pre;
+        }
+    },[])
+    console.log(arr3);
+    
+
+</script>
+</html>
