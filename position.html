@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1.0, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1.绝对定位：给父级设置position: relative;给子元素设置，position: absolute;子元素脱离文档流 -->
+    <div class="wrap" style="position: relative;">
+        <div class="box" style="position: absolute;"></div>
+    </div>
+    <!-- 相对定位：给自己设置position: relative;top,left也设置给自己;自己不脱离文档流,相对于自己移动 -->
+    <div class="wrap" style="position: fixed;top:10px;left: 20px;"> </div>
+    <!-- 固定定位：给自己设置position: fixed;top,left也设置给自己;脱离文档流,相对于浏览器 -->
+</body>
+</html>
