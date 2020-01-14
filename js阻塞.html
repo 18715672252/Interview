@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // js阻塞
+    // 所有的浏览器在下载JS文件的时候，会阻塞页面上的其他活动，包括其他资源的下载以及页面内容的呈现等等，只有当JS下载、解析、执行完，才会进行后面的操作
+    // 在现代的浏览器中CSS资源和图片image资源是并行下载的
+    //（1）内嵌脚本的阻塞
+    // 直接写在HTML文档中的js代码就是内嵌JS，内嵌脚本无需加载，可以直接执行，所以当页面有内嵌的脚本时，可以直接执行，导致会阻塞所有资源的加载和页面的呈现。
+    //（2）外联脚本阻塞
+    // 外联脚本不一样，外联脚本只有当页面加载到该<script>之后才会加载外联脚本，所以外联脚本只会阻塞其后面的内容的呈现以及资源的下载，在下面的代码中，页面会先展示一部分内容，后面一部分内容在5秒后展现
+    //总结
+        //1.图片和css是并行加载的
+        //2.js会阻塞页面上的其他活动，包括其他资源的下载以及页面内容的呈现等等
+
+
+
+
+</script>
+</html>

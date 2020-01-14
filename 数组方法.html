@@ -1,0 +1,28 @@
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <meta http-equiv="X-UA-Compatible" content="ie=edge">
+       <title>Document</title>
+   </head>
+   <body>
+       
+   </body>
+   <script>
+   //Array.includes() 找到参数值在是否存在数组中 存在返回true,不存在返回false
+   var arr = [1,2,3]
+   console.log(arr.includes(1));//true
+   //Array.some((item)=>{}) 依据判断条件，数组的元素是否有一个满足，若有一个满足则返回ture
+   var arr1 = [1,2,3];
+   let flag = arr1.some((item,index)=> {return item > 1})
+   console.log(flag);//true
+    //Array.redcude((pre,cur)=>{},c1) 第一次循环时如果提供c1, pre=c1, 不提供的话pre=cur , 后面的循环如果有返回值则pre等于上次的返回值 , 没有的话就是undefined
+   var arr2 = [1,2,5,8];
+   arr2.reduce(function(pre,curr){
+       console.log(pre,curr);
+   })
+   //Array.every(()=>{}) 依据判断条件，数组的元素是否全满足，若全满足则返回ture
+   
+   </script>
+   </html>

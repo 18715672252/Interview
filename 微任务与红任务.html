@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+//执行顺序 全局的同步任务>全局的微任务>全局的红任务(其他代码块一样) 每个任务里面同步执行完 , 才会执行里面的其他任务
+//定时器里面的代码属于红任务 , promise后面的then()和catch()里面的代码属于微任务 , new Promise时里面代码输入同步任务
+setTimeout(()=>{
+    console.log('我是定时器,红任务');//红任务
+},0)
+new Promise((re,rj)=>{//同步任务
+    re(2);
+    console.log('我是newPromise里面的代码,同步任务');//同步任务
+}).then(()=>{//微任务
+    console.log('我是re后的then,微任务');//微任务
+    
+})
+console.log('我是全局代码,同步任务');//同步任务
+
+
+
+</script>
+</html>
