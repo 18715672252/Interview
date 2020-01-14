@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /* 设置display: flex;后会有两根主-1.水平方向主轴(main axis)-2.垂直方向交叉轴(cross axis),主轴又分为开始主轴和结束主轴 */
+        .wrap {
+            display: flex;
+            width: 50%;
+            height: 500px;
+            border-bottom: 5px solid red;/*垂直方向结束交叉轴*/
+            border-top: 5px solid green;/*垂直方向开始交叉轴*/
+            border-left: 5px solid blue;/*水平方向开始主轴*/
+            border-right: 5px solid purple;/*水平方向结束主轴*/
+            margin:  0 auto;
+            /*flex-direction:子元素的排列方式*/
+            /*默认*/
+            flex-direction: row;
+            /*子元素从右到左*/
+            /* flex-direction: row-reverse; */
+            /*子元素从上到下*/
+            /* flex-direction: column; */
+            /*子元素从下到上*/
+            /* flex-direction: column-reverse; */
+            /*flex-wrap:定义子元素过多时是否换行排列*/
+            /*默认不换行  */
+            /*flex-wrap:nowrap;*/
+            /* 换行第一行上面 */
+            /* flex-wrap:wrap; */
+            /* 换行第一行下面 */
+            flex-wrap:wrap-reverse;
+        }
+        /* row(肉),direction(第ruai可神),column(靠了M),reverse(瑞我四) */
+        /* 
+            设在容器上属性有6种
+                1.flex-direction决定主轴的方向,可设置的属性值:(row | row-reverse | column | column-reverse;)
+                2.flex-wrap:定义换行情况,可设置的属性值:(nowrap | wrap | wrap-reverse;)
+                3.flex-flow:flex-direction和flex-wrap的简写，默认row nowrap
+                4.justify-content:定义项目在主轴上的对齐方式,可设置的属性值:(flex-start | flex-end | center | space-between | space-around)
+                5.align-items:定义项目在交叉轴上的对齐方式,可设置的属性值:(flex-start | flex-end | center | space-between | space-around)
+                6.align-content:定义多根轴线的对齐方式
+            设在项目上属性有6种:grow(哥肉),shrink(瞬可),basis(拜C可)
+                1.order:数值型,项目的排序,数值越小越靠前
+                2.flex-grow:数值型项目所占容器宽度的比例
+                3.flex-shrink:数值型定义项目是否是响应式的,为0时不是响应式的
+                4.flex-basis:可以设置项目宽度,默认值auto(主轴剩余的宽度空间)
+                5.flex:为flex-grow，flex-shrink和flex-basis的简写
+                6.align-self：允许单个项目与其他项目有不一样的对齐方式
+         */
+        /* .wrap div {
+            width: 20%;
+            height: 100px;
+            background: fuchsia;
+            margin-left: 10px;
+        } */
+        .box1 {
+            flex:m;
+            background: purple;
+        }
+        .box2 {
+            background: fuchsia;
+        }
+        .box3 {
+            background: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box3"></div>
+        <div class="box3"></div>
+        <div class="box3"></div>
+        <div class="box3"></div>
+        <div class="box3"></div>
+
+
+
+    </div>
+</body>
+</html>

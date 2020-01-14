@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        任务队列:
+        1.JS分为同步任务和异步任务
+        2.同步任务都在主线程上执行，形成一个执行栈
+        3.主线程之外，事件触发线程管理着一个任务队列，只要异步任务有了运行结果，就在任务队列之中放置一个事件
+        4.一旦执行栈中的所有同步任务执行完毕（此时JS引擎空闲），系统就会读取任务队列，将可运行的异步任务添加到可执行栈中，开始执行
+        运行机制:
+        1.执行一个宏任务（栈中没有就从事件队列中获取）
+        2.执行过程中如果遇到微任务，就将它添加到微任务的任务队列中
+        3.宏任务执行完毕后，立即执行当前微任务队列中的所有微任务（依次执行）
+        4.当前宏任务执行完毕，开始检查渲染，然后GUI线程接管渲染
+        5.渲染完毕后，JS线程继续接管，开始下一个宏任务（从事件队列中获取）
+        理解:下一个宏任务要执行,必须等到当前宏任务执行完毕后,再把当前宏任务的微任务队列里面的所有微任务执行完毕后才会执行(以此类推)
+        ps:1-script(整体代码)、setTimeout、setInterval属于宏任务;2-Promise.then,await下面的代码属于微任务
+    */
+//请写出输出内容
+//这题解法:
+//1.Promise本身是同步的立即执行函数
+//2.async函数执行默认返回一个promise对象
+//3.await后面的表达式会先执行一遍,将await下面的代码加入到microtask(当前宏任务的微任务队列中)中，然后就会跳出整个async函数来执行后面的代码。
+//4.promise和async函数都是微任务
+//下一个红任务要执行,必须等到当前红任务里面的所有微任务执行完毕后才会执行(以此类推)
+
+async function async1() {
+    console.log('async1 start');//第一个红任务
+    await async2();//第一个红任务
+    console.log('async1 end');//第一个红任务的微任务队列的第一个微任务
+}
+async function async2() {
+	console.log('async2');
+}
+console.log('script start');//第一个红任务
+setTimeout(function() {//第二个红任务
+    console.log('setTimeout');
+}, 0)
+async1();//第一个红任务
+new Promise(function(resolve) {
+    console.log('promise1');//第一个红任务
+    resolve();
+   
+ }).then(function() {
+   console.log('promise2');//第一个红任务的微任务队列的第二个微任务
+});
+console.log('script end');//第一个红任务
+
+
+
+
+
+</script>
+</html>
