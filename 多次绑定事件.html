@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box1">111111111111111</div>
+    <div id="box2">222222</div>
+    <div id="box3">3333</div>
+</body>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    //原生多次绑定事件会覆盖
+    document.getElementById('box1').onclick = function(){
+        console.log(1);
+    }
+    document.getElementById('box1').onclick = function(){
+        console.log(2);
+    }
+    //JQ绑定会累积，addEventListener绑定也会累积（JQ绑定事件的方式使用的原生的addEventListener）
+    $('#box2').click(function(){
+        console.log(3);
+    })
+    $('#box2').click(function(){
+        console.log(4);
+    })
+    //addEventListener绑定会累积
+    document.getElementById('box3').addEventListener('click',function(){
+        console.log(6);
+    })
+    document.getElementById('box3').addEventListener('click',function(){
+        console.log(6);
+    })
+</script>
+</html>

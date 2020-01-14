@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //通过函数内的arguments数组来执行参数函数，函数里面的this指向arguments
+    //为数组与真数组的区别1.不能通过forEAch便利 2.真数组的长度是可变的，伪数组的长度不可变
+function fn1(){
+    console.log(this.name);
+}
+function fn(){
+    arguments.name = 'sun'
+    console.log(arguments);
+    
+    arguments[0]();
+}
+fn(fn1,1);
+var foo = {
+    bar:function(){return this.baz},
+    baz:1
+}
+(function(){
+    return typeof arguments[0]()
+    
+})(foo.bar)
+
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //注：空字符串 ， null，undefined在if判断时都是false
+//区别1：typeof null为'object',typeof undefined为'undefined' 即：null的类型为对象 ， undefined为的类型为undefined为 
+//区别2：null - 0为0,undefined - 0为NAN
+console.log(null == undefined); //true
+console.log(typeof null); //object
+console.log(typeof undefined);//undefined
+console.log(null === undefined);//false
+for (var i = 0; i < 5; i++) {
+    (function(i){
+        setTimeout(()=>{
+        console.log(new Date,i);//这里打印的时间相同
+        
+        },1000)
+    })(i)
+    
+    
+}
+console.log(new Date,i);
+let t = (function(a){
+    this.a = a;
+    return function(b){
+        return this.a + b
+    }
+})(4)
+console.log(t(3));
+var name = 'g';
+var obj = {
+    name:'obj',
+    dose:function(){
+        var that = this;
+        this.name = 'dose';
+        return function(){
+            return that.name;
+        }
+    }
+}
+console.log(obj.dose().call(this));//'dose'
+
+</script>
+</html>

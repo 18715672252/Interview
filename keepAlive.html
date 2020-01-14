@@ -13,7 +13,29 @@
 //     <keep-alive :include="whiteList" :exclude="blackList" :max="amount">
 //      <component :is="currentComponent"></component>
 // </keep-alive>
-//include定义缓存白名单，keep-alive会缓存命中的组件；exclude定义缓存黑名单，被命中的组件将不会被缓存；max定义缓存组件上限，超出上限使用LRU的策略置换缓存数据
+//include定义缓存白名单，keep-alive会缓存命中的组件；exclude定义缓存黑名单，被命中的组件将不会被缓存；
+//max定义缓存组件上限，超出上限使用LRU的策略置换缓存数据
+//被缓存的组件里会多出两个生命周期函数activated，deactivated
+//当我们不使用<keep-alive>首次进入页面时钩子函数的执行顺序
+    //beforeRouteEnter --> created --> mounted --> destroyed
+//使用<keep-alive>首次进入页面页面时钩子函数的执行顺序 
+    //beforeRouteEnter --> created --> mounted --> activated --> deactivated
+//再次进入缓存页面时，created和mounted不会再执行
+    //beforeRouteEnter -->activated --> deactivated
+    //activated（艾克忒v忒特）
+    //deactivated（地艾克忒v忒特）
+/*
+    总结：
+        1.被缓存的组件会比不被缓存的组件多出两个钩子
+        2.被缓存的组件只有首次进入该组件时才会执行created和mounted这两个狗子，再次进入就不执行了
+        3.有activated这个钩子的情况下 ， 每次进入缓存组件的时候activated这个钩子都会执行，每次离开缓存组件的时候deactivated这个钩子都会执行
+        4.被缓存组件钩子执行的顺序beforeRouteEnter --> created --> mounted --> activated --> deactivated
+
+
+
+
+
+*/
 
 </script>
 </html>
