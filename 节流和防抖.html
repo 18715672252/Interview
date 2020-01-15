@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box2 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="box1">节流</div>
+    <div id="box2">防抖</div>
+</body>
+<script>
+// 节流:高频事件触发，但在n秒内只会执行一次，所以节流会稀释函数的执行频率
+// 思路:每次触发事件时都判断当前是否有等待执行的延时函数 
+console.log(+new Date());//获取当前时间戳
+function throttle(func, wait) {
+        var previous = 0;
+        return function () {
+            var now = +new Date();
+            if (now - previous > wait) {
+                func.apply(this, arguments);
+                previous = now;
+            }
+        }
+    }
+    function getUserAction(event) {
+        console.log(`每秒1秒内打印一次`)
+    }
+    document.querySelector('#box1').addEventListener('click', throttle(getUserAction, 1000))
+// 防抖:触发高频事件后n秒内函数只会执行一次，如果n秒内高频事件再次被触发，则重新计算时间   
+// 思路:每次触发事件时都取消之前的延时调用方法
+function dou(fn, wait) {
+        var time = null;
+        return function () {
+            clearTimeout(time)
+            time = setTimeout(() => {
+                // console.log(this)//div
+                fn.apply(this, arguments)//确保dou函数的this（上下文还是div）
+            }, wait);
+        }
+    }
+    function demo() {
+        console.log('防抖啦')
+    }
+    // 用句柄事件绑定调用dou事件，所以this为div节点对象
+    document.querySelector('#box2').addEventListener('mouseover', dou(demo, 1000))    
+</script>
+</html>

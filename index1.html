@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap {
+            display: flex;
+            width: 50%;
+            height: 500px;
+            border-bottom: 5px solid red;
+            border-top: 5px solid green;
+            border-left: 5px solid blue;
+            border-right: 5px solid purple;
+            margin:  0 auto;
+           /* flex-direction: column; */
+        }
+        .wrap div {
+            height: 200px;
+        }
+        .box1 {
+            
+            /* flex-grow: 1; */
+            background: red;
+            flex-shrink: 1;
+            flex-basis: 300px;
+            /* border: 1px solid forestgreen; */
+        }
+        .box2 {
+            
+            flex-grow: 1;
+            background: green;
+            /* border: 1px solid red; */
+            flex-shrink: 1;
+           
+        }
+        /* .box3 {
+            
+            flex-grow: 1;
+            background: green;
+            border: 1px solid red;
+            flex-shrink: 1;
+           
+        } */
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+
+
+    </div>
+</body>
+</html>
