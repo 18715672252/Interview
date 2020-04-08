@@ -36,7 +36,7 @@ function throttle(func, wait) {
         console.log(`每秒1秒内打印一次`)
     }
     document.querySelector('#box1').addEventListener('click', throttle(getUserAction, 1000))
-// 防抖:触发高频事件后n秒内函数只会执行一次，如果n秒内高频事件再次被触发，则重新计算时间   
+// 防抖:触发高频事件后n秒之后高频事件才会执行，如果n秒内高频事件触发多次，则以最后一次触发高频事件的时间为时间线，再等n秒之后才会触发
 // 思路:每次触发事件时都取消之前的延时调用方法
 function dou(fn, wait) {
         var time = null;
