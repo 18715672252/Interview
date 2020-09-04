@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判断对象是否存在某个属性</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        1.  in 操作符
+        用法： '属性名' in Object ---> 存在返回true
+        特点：如果原型链上有这个属性也会返回true
+    
+    */ 
+    let obj = { a: 1}
+    console.log('in 操作符');
+    console.log(obj);
+    console.log('toString' in obj); // true
+    console.log('a' in obj); // true
+    /*
+        2. Object.hasOwnProperty()
+        用法：Object.hasOwnProperty('属性名')
+        特点：不能识别原型链上的属性0
+    */
+    console.log('hasOwnProperty');
+    let obj1 =  {b:2}
+    console.log(obj1.hasOwnProperty('b')); // true
+    console.log(obj1.hasOwnProperty('toString')); // false
+</script>
+</html>
