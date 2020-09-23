@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 需要将所有数字升位转化为整型了再做计算，
+// .计算完毕后再将最终结果进行相应的降位处理。
+function add(num1, num2, operator) {
+   var p1 = 0;
+   var p2 = 0;
+
+   if (num1.toString().split('.').length > 1) {
+       p1 = num1.toString().split('.')[1].length;
+   }
+
+   if (num2.toString().split('.').length > 1) {
+       p2 = num2.toString().split(".")[1].length;
+   }
+
+   var p = p1 > p2 ? p1 : p2;
+   console.log(p,p1,p2);
+   var n1 = num1 * Math.pow(10, p);
+   var n2 = num2 * Math.pow(10, p);
+   console.log(n1,n2);
+   if (operator === '*' || operator === '/') {
+       if (operator === '/') {
+        var result = n1 / n2;
+       } else {
+        var result = (n1 * n2) / Math.pow(10, (2*p));
+       }
+    
+   } else {
+    if (operator === '+') {
+        var result = (n1 + n2) / Math.pow(10, p);
+       } else {
+        var result = (n1 - n2) / Math.pow(10, p);
+       }
+   
+   }
+   
+
+   return result;
+}
+
+console.log(add(8, 0.2,'/'));
+
+
+
+</script>
+</html>

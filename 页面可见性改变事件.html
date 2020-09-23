@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+
+    visibilitychange事件是浏览器新添加的一个事件，
+    当浏览器的某个标签页切换到后台，
+    或从后台切换到前台时就会触发该消息，
+    现在主流的浏览器都支持该消息了，
+    例如Chrome, Firefox, IE10等
+    */
+var hiddenProperty = 'hidden' in document ? 'hidden' : 
+  　　　　　　　　　　'webkitHidden' in document ? 'webkitHidden' : 
+  　　　　　　　　　　'mozHidden' in document ? 'mozHidden' : 
+ 　　　　　　　　　　null;
+  var visibilityChangeEvent = hiddenProperty.replace(/hidden/i, 'visibilitychange');
+  var onVisibilityChange = function(){
+  　　if (!document[hiddenProperty]) { 
+  　　　　console.log('页面激活');
+  　　}else{
+ 　　　　console.log('页面隐藏')
+ 　　}
+ }
+ document.addEventListener(visibilityChangeEvent, onVisibilityChange);
+
+
+
+</script>
+</html>
