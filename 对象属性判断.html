@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+·<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,5 +29,14 @@
     let obj1 =  {b:2}
     console.log(obj1.hasOwnProperty('b')); // true
     console.log(obj1.hasOwnProperty('toString')); // false
+    var t = (function (a) {
+        this.a = a
+        return function(b) {
+            return this.a + b
+        }
+    }(function(a,b){
+        return a
+    }(3,6)))
+    alert(t(3))
 </script>
 </html>
